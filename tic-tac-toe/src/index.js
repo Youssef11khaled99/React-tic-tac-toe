@@ -19,7 +19,12 @@ function Square(props) {
         xIsNext: true,
       };
     }
-  
+    restProgress() {
+        this.setState({
+            squares: Array(9).fill(null),
+            xIsNext: true,
+        });
+    }
     handleClick(i) {
       const squares = this.state.squares.slice();
       if (calculateWinner(squares) || squares[i]) {
@@ -67,6 +72,9 @@ function Square(props) {
             {this.renderSquare(6)}
             {this.renderSquare(7)}
             {this.renderSquare(8)}
+          </div>
+          <div>
+              <button className="button" onClick={() => this.restProgress()}> R E S T </button>
           </div>
         </div>
       );
